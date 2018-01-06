@@ -65,9 +65,9 @@ namespace CodingDojo5.ViewModel
             Category[0].AddItemToCategory(new ItemVm("Crawler Crane", "12+", new BitmapImage(new Uri("Images/lego4.jpg", UriKind.Relative))));
             
             //Add playmobile items to category
-            Category[0].AddItemToCategory(new ItemVm("Beach House", "5+", new BitmapImage(new Uri("Images/playmobile1.jpg", UriKind.Relative))));
-            Category[0].AddItemToCategory(new ItemVm("House", "8+", new BitmapImage(new Uri("Images/playmobile2.jpg", UriKind.Relative))));
-            Category[0].AddItemToCategory(new ItemVm("Knights", "8+", new BitmapImage(new Uri("Images/playmobile13.jpg", UriKind.Relative))));
+            Category[1].AddItemToCategory(new ItemVm("Beach House", "5+", new BitmapImage(new Uri("Images/playmobile1.jpg", UriKind.Relative))));
+            Category[1].AddItemToCategory(new ItemVm("House", "8+", new BitmapImage(new Uri("Images/playmobile2.jpg", UriKind.Relative))));
+            Category[1].AddItemToCategory(new ItemVm("Knights", "8+", new BitmapImage(new Uri("Images/playmobile13.jpg", UriKind.Relative))));
         }
     }
 }
