@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Coding Dojo 5" Height="500" Width="750"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
-
+<!--Robert Chochole wi16b065-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
