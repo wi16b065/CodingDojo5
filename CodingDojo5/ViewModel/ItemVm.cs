@@ -22,16 +22,6 @@ namespace CodingDojo5.ViewModel
 
 
         //singleton pattern
-        public int NoOfItemsInCategory
-        {
-            get
-            {
-                if (ItemsInCategory == null) return 0;
-                return ItemsInCategory.Count;
-            }
-        }
-
-        //singleton pattern
         public void AddItemToCategory(ItemVm item)
         {
             if (ItemsInCategory == null)

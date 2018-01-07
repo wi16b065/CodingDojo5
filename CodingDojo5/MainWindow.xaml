@@ -34,7 +34,7 @@
         
         <!--category detail section to display a button within a list element -> ItemsControl; do not use ListBox-->
         <!--Listbox = ItemsControl but ItemsControl =! Listbox-->
-        <ItemsControl ItemsSource="{Binding SelectedCategory.ItemsInCategory}" Grid.Column="1" Grid.Row="0">
+        <ItemsControl x:Name="MyItems" ItemsSource="{Binding SelectedCategory.ItemsInCategory}" Grid.Column="1" Grid.Row="0">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"></WrapPanel>
@@ -49,7 +49,11 @@
                                 <Label Content="{Binding Description}" FontSize="12" VerticalAlignment="Center"></Label>
                                 <Label Content="{Binding AgeRecom}" FontSize="20" VerticalAlignment="Center"></Label>
                             </StackPanel>
-                            <Button Content="Buy" Width="180" Height="30" HorizontalAlignment="Center" Margin="3"></Button>
+                            <Button Content="Buy" 
+                                    Command="{Binding DataContext.BuyBtnClickedCmd, RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"
+                                    CommandParameter="{Binding DataContext, RelativeSource={RelativeSource Self}}"
+                                    Width="180" Height="30" HorizontalAlignment="Center" Margin="3"></Button>
+                            <!--short version: CommandParameter="{Binding}" will pass the current DataContext of the control-->
                         </StackPanel>
                     </Border>
                 </DataTemplate>

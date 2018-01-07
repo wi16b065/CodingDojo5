@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
 using System;
 using System.Windows.Media.Imaging;
+using GalaSoft.MvvmLight.CommandWpf;
 
 namespace CodingDojo5.ViewModel
 {
@@ -28,7 +29,10 @@ namespace CodingDojo5.ViewModel
 
         public ItemVm SelectedCategory
         {
-            get { return selectedCategory; }
+            get
+            {
+                return selectedCategory;
+            }
             set
             {
                 selectedCategory = value;
@@ -36,25 +40,42 @@ namespace CodingDojo5.ViewModel
             }
         }
 
+
+        private RelayCommand<ItemVm> buyBtnClickedCmd;
+
+        public RelayCommand<ItemVm> BuyBtnClickedCmd
+        {
+            get
+            {
+                return buyBtnClickedCmd;
+            }
+            set
+            {
+                buyBtnClickedCmd = value;
+                RaisePropertyChanged();
+            }
+        }
         public ObservableCollection<ItemVm> Category { get; set; }
 
         public ObservableCollection<ItemVm> Cart { get; set; }
 
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+
             Category = new ObservableCollection<ItemVm>();
             Cart = new ObservableCollection<ItemVm>();
+            BuyBtnClickedCmd = new RelayCommand<ItemVm>((itemOfPurchase) => 
+            {
+                Cart.Add(itemOfPurchase);
+                foreach (var item in Cart)
+                {
+                    Console.WriteLine(item.Description);
+                }
+            });
+
             GenerateDemoData();
         }
-        
+
         private void GenerateDemoData()
         {
             //generate Categories
@@ -66,7 +87,7 @@ namespace CodingDojo5.ViewModel
             Category[0].AddItemToCategory(new ItemVm("Digger", "12+", new BitmapImage(new Uri("Images/lego2.jpg", UriKind.Relative))));
             Category[0].AddItemToCategory(new ItemVm("Chain Loader", "14+", new BitmapImage(new Uri("Images/lego3.jpg", UriKind.Relative))));
             Category[0].AddItemToCategory(new ItemVm("Crawler Crane", "12+", new BitmapImage(new Uri("Images/lego4.jpg", UriKind.Relative))));
-            
+
             //Add playmobile items to category
             Category[1].AddItemToCategory(new ItemVm("Beach House", "5+", new BitmapImage(new Uri("Images/playmobil1.jpg", UriKind.Relative))));
             Category[1].AddItemToCategory(new ItemVm("House", "8+", new BitmapImage(new Uri("Images/playmobil2.jpg", UriKind.Relative))));
@@ -77,8 +98,8 @@ namespace CodingDojo5.ViewModel
             Category[1].AddItemToCategory(new ItemVm("7 Knights", "8+", new BitmapImage(new Uri("Images/playmobil3.jpg", UriKind.Relative))));
 
             //Testitem for Cart
-            Cart.Add(new ItemVm("Crawler Crane", "12+", new BitmapImage(new Uri("Images/lego4.jpg", UriKind.Relative))));
-            Cart.Add(new ItemVm("Digger", "12+", new BitmapImage(new Uri("Images/lego2.jpg", UriKind.Relative))));
+            //Cart.Add(new ItemVm("Crawler Crane", "12+", new BitmapImage(new Uri("Images/lego4.jpg", UriKind.Relative))));
+            //Cart.Add(new ItemVm("Digger", "12+", new BitmapImage(new Uri("Images/lego2.jpg", UriKind.Relative))));
         }
     }
 }
