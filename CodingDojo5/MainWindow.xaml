@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CodingDojo5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="750"
+        Title="Coding Dojo 5" Height="500" Width="750"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
 
     <Grid>
@@ -42,16 +42,33 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="{Binding Image}" Height="60"></Image>
-                            <Label Content="{Binding Description}" FontSize="12"></Label>
-                            <Label Content="{Binding AgeRecom}" FontSize="20"></Label>
+                    <Border BorderBrush="Black" BorderThickness="2" CornerRadius="5" Width="220" Margin="5">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Image}" Height="60" Margin="3"></Image>
+                                <Label Content="{Binding Description}" FontSize="12" VerticalAlignment="Center"></Label>
+                                <Label Content="{Binding AgeRecom}" FontSize="20" VerticalAlignment="Center"></Label>
+                            </StackPanel>
+                            <Button Content="Buy" Width="180" Height="30" HorizontalAlignment="Center" Margin="3"></Button>
                         </StackPanel>
                     </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        
+        <!--Cart section-->
+        <ListBox ItemsSource="{Binding Cart}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Image}" Height="70" Margin="5,0,5,0"></Image>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         
     </Grid>
 </Window>
